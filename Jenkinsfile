@@ -19,6 +19,20 @@ pipeline {
 
       }
     }
-
+	stage('Tests') {
+		steps{
+			sh 'echo testing...'
+			sh 'sleep 3'
+			sh 'echo Test 100% success!'
+		}
+	}
+	stage('Deploy') {
+		steps{
+			
+			sh 'echo deploying...'
+			sh 'sleep 5'
+			sh 'echo done!'
+		}
+	}
   }
 }
