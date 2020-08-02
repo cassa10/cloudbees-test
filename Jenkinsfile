@@ -8,7 +8,7 @@ pipeline {
           steps {
             sh 'echo Building 1 ...'
             sh 'sleep 8'
-            sh 'DONE'
+            sh 'echo DONE'
           }
         }
 
@@ -17,7 +17,7 @@ pipeline {
           steps {
             sh 'echo "Building 2 ..."'
             sh 'sleep 22'
-            sh 'DONE'
+            sh 'echo DONE'
           }
         }
 
