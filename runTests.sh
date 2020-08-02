@@ -1,9 +1,10 @@
 #!/bin/bash
 
+# $1 param: cantidadTests
 # Run all tests
 
 n=1
-max=10
+max=$1
 
 # loop until $n equals $max
 while [ $n -le $max ]
