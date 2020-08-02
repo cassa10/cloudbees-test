@@ -7,8 +7,8 @@ pipeline {
           agent any
           steps {
             sh 'echo Building 1 ...'
-            sh 'sleep 8'
-            sh 'echo DONE'
+            sh './jenkins/build.sh'
+            sh 'ls -la'
           }
         }
 
