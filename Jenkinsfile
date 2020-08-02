@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Buzz buzz') {
+    stage('Multiple Build') {
       parallel {
         stage('Build 1') {
           agent any
