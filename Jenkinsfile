@@ -26,7 +26,8 @@ pipeline {
 
     stage('Tests') {
       steps {
-        sh 'echo testing...'
+		sh 'chmod +x runTests.sh'
+        sh './runTests.sh'
         sh 'sleep 3'
         sh 'echo Test 100% success!'
       }
