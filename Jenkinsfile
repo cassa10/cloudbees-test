@@ -16,7 +16,7 @@ pipeline {
           steps {
             sh 'echo Backend Tests'
             sh 'chmod +x runTests.sh'
-            sh './runTests.sh'
+            sh './runTests.sh 50'
             sh 'sleep 3'
             sh 'echo Test 100% success!'
           }
@@ -26,7 +26,7 @@ pipeline {
           steps {
             sh 'echo Frontend Tests'
             sh 'chmod +x runTests.sh'
-            sh './runTests.sh'
+            sh './runTests.sh 25'
             sh 'sleep 6'
             sh 'echo Test 100% success!'
           }
