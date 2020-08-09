@@ -20,7 +20,7 @@ En el main folder, se encuentra el bash script build.sh que ejecuta comandos mav
 
 ## Ejecución del artefacto
 Para ejecutar la API (el jar o artefacto), hay que ejecutar el siguiente comando:
- "java -jar <<ruta-donde-se-encuentra-el-artefacto>>"
+ "java -jar << ruta-donde-se-encuentra-el-artefacto >>"
 
 Si no se cambio nada del pom, la ruta donde se encuentra el artefacto seria "./demo-cloudbees/target" desde la carpeta del repo.
 
