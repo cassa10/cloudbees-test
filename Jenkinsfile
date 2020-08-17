@@ -49,10 +49,10 @@ pipeline {
       }
     }
 
-    stage('Deploy API at port 8080'){
+    stage('Deploy API at port 8081'){
         steps {
           sh 'chmod +x runImage.sh'
-          sh './runImage.sh 8080'
+          sh './runImage.sh 8081'
         }
     } 
   }
