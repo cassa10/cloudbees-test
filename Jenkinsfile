@@ -34,14 +34,26 @@ pipeline {
 
       }
     }
-
 	
-	stage('Archive artifacts'){
-	  steps {
-          archiveArtifacts 'demo-cloudbees/target/*.jar'
-          archiveArtifacts 'demo-cloudbees/target/surefire-reports/*.xml'
-      }
-	}
+    stage('Archive artifacts'){
+      steps {
+            archiveArtifacts 'demo-cloudbees/target/*.jar'
+            archiveArtifacts 'demo-cloudbees/target/surefire-reports/*.xml'
+        }
+    }
 
+    stage('Build docker image'){
+      steps {
+        sh 'chmod +x Dockerfile'
+        sh 'docker build -t demo-cloudbees-api'
+      }
+    }
+
+    stage('Deploy API at port 8080'){
+        steps {
+          sh 'chmod +x runImage.sh'
+          sh './runImage.sh 8080'
+        }
+    } 
   }
 }
