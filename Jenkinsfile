@@ -45,7 +45,7 @@ pipeline {
     stage('Build docker image'){
       steps {
         sh 'chmod +x Dockerfile'
-        sh 'docker build -t demo-cloudbees-api'
+        sh 'docker build -t demo-cloudbees-api .'
       }
     }
 
