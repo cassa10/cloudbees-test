@@ -50,7 +50,7 @@ pipeline {
     }
 
     stage('Deploy API at port 8081'){
-        agent none
+        agent { label master }
         steps {
           sh 'chmod +x runImage.sh'
           sh './runImage.sh 8081'
