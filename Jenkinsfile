@@ -1,15 +1,12 @@
 pipeline {
-  agent any
+  agent { label 'maven-jdk8' }
   stages {
     stage('Build') {
-	  agent maven;
       steps {
-		dir(){
           sh 'echo Building...'
           sh 'chmod +x build.sh'
           sh './build.sh'
           sh 'echo Done'
-		}
       }
     }
 
@@ -38,23 +35,11 @@ pipeline {
       }
     }
 
-    stage('Deploy on port 8080') {
-	  agent maven;
-      steps {
-        sh 'echo deploying...'
-        sh 'java -jar demo-cloudbees/target/demo-cloudbees-0.0.1-SNAPSHOT.jar'
-        sh 'echo done!'
-      }
-    }
-
+	
 	stage('Archive artifacts'){
-	  steps{
-	    sh 'Archiving artefacts ...'
-		sh 'Archiving jar'
-		archiveArtifacts(artifacts: 'demo-cloudbees/target/*.jar', fingerprint: true)
-		sh 'Archiving tests reports'
-		archiveArtifacts(artifacts: 'demo-cloudbees/target/surefire-reports/*.xml', fingerprint: true)
-		sh 'Done!'
+	  steps {
+          archiveArtifacts 'demo-cloudbees/target/*.jar'
+          archiveArtifacts 'demo-cloudbees/target/surefire-reports/*.xml'
       }
 	}
 
