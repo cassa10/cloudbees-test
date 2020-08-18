@@ -1,12 +1,14 @@
 pipeline {
-  agent { label 'maven-jdk8' }
+  agent {
+    label 'maven-jdk8'
+  }
   stages {
     stage('Build') {
       steps {
-          sh 'echo Building...'
-          sh 'chmod +x build.sh'
-          sh './build.sh'
-          sh 'echo Done'
+        sh 'echo Building...'
+        sh 'chmod +x build.sh'
+        sh './build.sh'
+        sh 'echo Done'
       }
     }
 
@@ -34,26 +36,27 @@ pipeline {
 
       }
     }
-	
-    stage('Archive artifacts'){
+
+    stage('Archive artifacts') {
       steps {
-            archiveArtifacts 'demo-cloudbees/target/*.jar'
-            archiveArtifacts 'demo-cloudbees/target/surefire-reports/*.xml'
-        }
+        archiveArtifacts 'demo-cloudbees/target/*.jar'
+        junit 'demo-cloudbees/target/surefire-reports/*.xml'
+      }
     }
 
-    stage('Build docker image'){
+    stage('Build docker image') {
       steps {
         sh 'chmod +x Dockerfile'
         sh 'docker build -t demo-cloudbees-api .'
       }
     }
 
-    stage('Deploy API at port 8081'){
-        steps {
-          sh 'chmod +x runImage.sh'
-          sh './runImage.sh 8081'
-        }
-    } 
+    stage('Deploy API at port 8081') {
+      steps {
+        sh 'chmod +x runImage.sh'
+        sh './runImage.sh 8081'
+      }
+    }
+
   }
 }
